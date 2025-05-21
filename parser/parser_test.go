@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/actions/workflow-parser/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/trygrit/gha-workflow-parser/model"
 )
 
 func TestParseEmptyConfig(t *testing.T) {

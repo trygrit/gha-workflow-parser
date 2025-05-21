@@ -7,12 +7,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/actions/workflow-parser/model"
 	"github.com/hashicorp/hcl"
 	"github.com/hashicorp/hcl/hcl/ast"
 	hclparser "github.com/hashicorp/hcl/hcl/parser"
 	"github.com/hashicorp/hcl/hcl/token"
 	"github.com/soniakeys/graph"
+	"github.com/trygrit/gha-workflow-parser/model"
 )
 
 const minVersion = 0
@@ -69,9 +69,10 @@ func Parse(reader io.Reader, options ...OptionFunc) (*model.Configuration, error
 // parseAndValidate converts a HCL AST into a Parser and validates
 // high-level structure.
 // Parameters:
-//  - root - the contents of a .workflow file, as AST
+//   - root - the contents of a .workflow file, as AST
+//
 // Returns:
-//  - a Parser structure containing actions and workflow definitions
+//   - a Parser structure containing actions and workflow definitions
 func parseAndValidate(root ast.Node, options ...OptionFunc) *Parser {
 	p := &Parser{
 		posMap: make(map[interface{}]ast.Node),
